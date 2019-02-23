@@ -144,7 +144,7 @@ pwa:
 
 # enable rating for posts
 rating_enable: true
-rating_id: 16625
+rating_id: 16876
 rating_color: f79533
 
 # fancybox
