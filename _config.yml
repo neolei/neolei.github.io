@@ -1,12 +1,12 @@
 # Site settings
-title: Soptlog
-SEOTitle: Soptlog | Soptq’s Blog
+title: Lei's Blog
+SEOTitle: Neolei | Lei's Blog
 header-img: img/home-bg.jpg
-email: sooptq@gmail.com
-description: "Soptq’s personal blog based on Jekyll and Github Pages. It will contain some  
+email: hzauwl@163.com
+description: "lei’s personal blog based on Jekyll and Github Pages. It will contain some  
 experience and diaries."
-keyword: “Soptq, Soptq Blog, Blog, Website, Internet, Java, Android, 博客, 个人网站, 前段”
-url: "soptq.me"              # your host, for absolute URL
+keyword: “Neolei, lei's Blog, Blog, Bioinformatics, Website, Internet, Python, 博客, 个人网站”
+url: "https://neolei.github.io"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -18,11 +18,11 @@ nightMode: false
 # SNS settings
 RSS: true
 # weibo_username:     huxpro
-zhihu_username:     soptq
-github_username:    Soptq
-bilibili_username:  13942596
-linkedin_username:  宇浩-周-a01657172
-#twitter_username:  huxpro
+zhihu_username:     wanglei520
+github_username:    neolei
+# bilibili_username:  13942596
+# linkedin_username:  宇浩-周-a01657172
+twitter_username:  NeoleiHUST
 #facebook_username:  huxpro
 
 
@@ -69,7 +69,7 @@ kramdown:
 #    admin: 名称
 
 # Disqus settings
-disqus_username: soptlog
+disqus_username: neoleis-blog
 
 # Duoshuo settings
 # duoshuo_username: soptlog
@@ -83,14 +83,14 @@ disqus_username: soptlog
 # Baidu Analytics
 #ba_track_id: 
 # Google Analytics
-ga_track_id: 'UA-113503573-1'            # Format: UA-xxxxxx-xx
+ga_track_id: 'UA-130645409-2'            # Format: UA-xxxxxx-xx
 ga_domain: auto
 
 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: “Only my Railgun”
+sidebar-about-description: “no zuo, no die!”
 sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
