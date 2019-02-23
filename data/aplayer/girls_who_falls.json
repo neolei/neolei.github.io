@@ -1,0 +1,12 @@
+---
+layout: none
+---
+[{% for music in site.data.aplayer.girls_who_falls %}
+{
+"name": "{{ music.name }}",
+"artist": "{{ music.artist }}",
+"url" : "{{ music.url }}",
+"cover": "{{ music.cover }}",
+"type": "hls"
+}{% if forloop.last == false %},{% endif %}
+{% endfor %}]

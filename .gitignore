@@ -1,0 +1,6 @@
+.DS_Store
+/_site
+.gitignore.swp
+.idea/inspectionProfiles/Project_Default.xml
+.idea/workspace.xml
+_site

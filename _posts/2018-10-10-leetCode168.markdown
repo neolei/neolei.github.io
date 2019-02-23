@@ -1,0 +1,132 @@
+---
+layout:     post
+title:      “LeetCode:168”
+subtitle:   “excel-sheet-column-title”
+date:       2018-10-10
+author:     “Soptq”
+header-img: "img/post_leetcode.jpg"
+catalog:    false
+tags:
+    - LeetCode Easy
+    - Java
+---
+
+
+>长期更新，对使用 Java 刷 LeetCode 过程中一些有趣的题的感想和启发。
+>[解题源代码仓库](https://github.com/Soptq/LeetCodeLib)
+
+### 题目
+
+> [题目链接](https://leetcode.com/problems/excel-sheet-column-title/)
+>
+>Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+>
+>For example:
+>
+>    1 -> A
+>
+>    2 -> B
+>
+>    3 -> C
+>
+>    ...
+>
+>    26 -> Z
+>
+>    27 -> AA
+>
+>    28 -> AB 
+>
+>    ...
+>
+>Example 1:
+>
+>Input: 1
+>
+>Output: "A"
+>
+>Example 2:
+>
+>
+>Input: 28
+>
+>Output: "AB"
+>
+>
+>Example 3:
+>
+>Input: 701
+>
+>Output: "ZY"
+>
+
+### 我的思路
+
+这道题我的思路是先通过等比数列算出来结果有多少位，然后在一位一位的算出来字符。具体的算每一位的方式就是算第 `m` 位的时候用 `n - 26^{n-1}` ,再从 `alphaArr` 中提取。结果就是当 `n = 10000001` 的时候，TLE。。。
+
+### 我的代码
+
+```java
+//解决方法
+class Solution {
+    String[] alphaArr = new String[]{"","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+
+    public String convertToTitle(int n) {
+        int bit = findBit(n);
+        int a = n;
+        int b,c;
+        String output = "";
+        while(bit > 0){
+            b = myPow(bit - 1);
+            c = n / b;
+            if (c > 26) c = 26
+                else {
+                    if (n%26 == 0 && bit != 1) c -= 1;
+                }
+            output = output + alphaArr[c];
+            bit = bit - 1;
+            n -= b * c;
+        }
+        return output;
+    }
+
+    public int findBit(int n){
+        int i = 1;
+        while (calcu(i) < n){
+            i++;
+        }
+        return i;
+    }
+
+    public int calcu(int i){
+        return (26*(1 - myPow(i)))/(-25);
+    }
+
+    public int myPow(int upper){
+        int output = 1;
+        int lower = 26;
+        for (int i = 0;i < upper ; i++) {
+            output *= lower;
+        }
+        return output;
+    }
+}
+```
+
+### OMG OTL!!!
+
+最后我想了很久还是没有想出来好的解法，知道是要用递归算法但不知道怎么用。于是只好去翻一翻 `discuss`,结果。。。
+
+```java
+//My 1 lines code in Java, C++, and Python
+
+return n == 0 ? "" : convertToTitle(--n / 26) + (char)('A' + (n % 26));
+```
+
+惊呆了。。。自己真的太辣鸡了。
+
+
+
+
+
+

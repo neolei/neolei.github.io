@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<script src='/js/nprogress.min.js'></script>
+<script>
+    NProgress.start();
+</script>
+
+    {% include nav.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+{% if page.pall %}
+<script src="/js/bg-loaded.min.js"></script>
+<script>
+    $('.eclosion').bgLoaded({
+        afterLoaded: function () {
+            console.info('parallax effect is loaded');
+            scene.classList.remove('hidden');
+        }
+    });
+</script>
+{% endif %}
+<!--Nprogress.js-->
+<script>
+    var interval = setInterval(function() { NProgress.inc(); }, 1000);
+    $(function() {
+        clearInterval(interval);
+        NProgress.done();
+    });
+</script>
+
+</body>
+
+</html>

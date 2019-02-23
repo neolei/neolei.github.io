@@ -1,0 +1,462 @@
+---
+layout: default
+---
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+{% include intro-header.html type='post' %}
+
+<!-- add support for d3 -->
+{% if page.d3 %}
+    {% include d3_support.html %}
+{% endif %}
+
+
+<!-- Post Content -->
+<article xmlns:display="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row">
+            <div class="
+                col-lg-1 col-lg-offset-0
+                visible-lg-block ">
+                <div class="side-progress hidden">
+                    <div class="progress vertical" onclick="DisplayCoord(event)">
+                        <div role="progressbar" style="height: 100%;" id="progressid"
+                             class="progress-bar progress-bar-secondary"></div>
+                    </div>
+                    <p style="font-size: 10px; margin: 0 0 0 0;" id="progress-num">100%</p>
+                </div>
+            </div>
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <!-- Multi-Lingual -->
+                {% if page.multilingual %}
+                <!-- Language Selector -->
+                <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+                    <option value="0" selected> 中文 Chinese </option>
+                    <option value="1"> 英文 English </option>
+                </select>
+                {% endif %}
+
+                {% if page.reproduce %}
+                <div class="reproduce-block">
+                    <p><strong>警告 Warning：</strong></p>
+                    <p>本文由博客站长转载但不一定代表站长观点，请阅读时明辨是非!</p>
+                    <p>This article is reproduced by the webmaster but may NOT represent the view of the webmaster, please distinguish between right and wrong when reading!</p>
+                </div>
+                {% endif %}
+
+                <div class="post-content">
+                    {% if page.password %}
+                    <!-- password protection -->
+                    <div class="staticrypt-form">
+                        <div class="staticrypt-instructions">
+                            <p class="staticrypt-title">受保护的文章 | Protected Post</p>
+                            <p>输入正确密钥以解锁文章 | Enter passphrase to unlock the page</p>
+                        </div>
+
+                        <hr>
+
+                        <form id="staticrypt-form" action="#" method="post">
+                            <input id="staticrypt-password" type="password" name="password" placeholder="密钥 | Passphrase"/>
+
+                            <input type="submit" class="staticrypt-decrypt-button" value="解密 | DECRYPT"/>
+                        </form>
+                    </div>
+                    {% else %}
+                    {{ content }}
+                    {% endif %}
+                </div>
+
+                <hr style="visibility: hidden;">
+
+                <centerquote>
+                    {% if page.reproduce == false %}
+                    <div class="copyright-block">
+                        <p><strong>本文作者 Auther：</strong> Soptq</p>
+                        <p><strong>本文链接 Link：</strong> soptq.me{{ page.url | replace: '//', '/' }}</p>
+                        <p><strong>版权声明 Copyright：</strong> 本博客所有文章除特别声明外，均采用 <a
+                                href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+                            许可协议。转载请注明出处！ All articles in this blog use the <a
+                                    href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+                            license agreement unless otherwise stated. Please indicate the source!</p>
+                    </div>
+                    {% endif %}
+                    <br>
+                    <div class="text-center">
+                        <p>您觉得本文怎么样？ How do you feel after reading?</p>
+                        <div id="wpac-rating"></div>
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <p>发现有<strong>错别字</strong>？请麻烦您在<strong><a href="https://github.com/Soptq/Soptq.github.io/issues">这里</a></strong>汇报。谢谢您！</p>
+                    </div>
+                    <br>
+                </centerquote>
+
+                <br>
+
+                <ul class="pager">
+                    {% if page.previous.url %}
+                    <li class="previous">
+                        <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">
+                        Previous<br>
+                        <span>{{page.previous.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if page.next.url %}
+                    <li class="next">
+                        <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">
+                        Next<br>
+                        <span>{{page.next.title}}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+
+                <hr style="visibility: hidden;">
+
+                {% if site.disqus_username %}
+                <!-- disqus 评论框 start -->
+                <div class="comment">
+                    <div id="disqus_thread" class="disqus-thread"></div>
+                </div>
+                <!-- disqus 评论框 end -->
+                {% endif %}
+
+                {% if site.netease_comment %}
+                <!-- 网易云跟帖 评论框 start -->
+                <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+                <!-- 网易云跟帖 评论框 end -->
+                {% endif %}
+            </div>
+
+            <!-- Side Catalog Container -->
+            {% if page.catalog %}
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container hidden">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                {% include featured-tags.html bottom=true %}
+
+                <!-- Friends Blog -->
+                {% include friends.html %}
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+ <!--add support for mathjax by voleking-->
+{% if page.mathjax %}
+  {% include mathjax_support.html %}
+{% endif %}
+
+{% if site.netease_comment %}
+<!-- 网易云跟帖JS代码 start -->
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href,
+    sourceId: "",
+    productKey: "de25fc98a6fe48b3bc8a7ae765da99a0",
+    target: "cloud-tie-wrapper"
+  };
+  var yunManualLoad = true;
+  Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
+<!-- 网易云跟帖JS代码 end -->
+{% endif %}
+
+<script>
+    let act = 0;
+    let per = 1;
+
+    function updateProgress() {
+        act = (document.documentElement.scrollTop || document.body.scrollTop) / (document.body.offsetHeight - window.innerHeight)
+        per = 1 - act;
+        const progressbar = document.getElementById('progressid');
+        const progress_num = document.getElementById('progress-num');
+        progressbar.style.height = parseInt(per * 100) + '%';
+        progress_num.innerText = parseInt(act * 100) + '%';
+    }
+</script>
+
+
+{% endif %}
+
+<script>
+    // first add raf shim
+    // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+    window.requestAnimFrame = (function(){
+        return  window.requestAnimationFrame       ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame    ||
+            function( callback ){
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+
+    // main function
+    function scrollToY(scrollTargetY, speed, easing) {
+        // scrollTargetY: the target scrollY property of the window
+        // speed: time in pixels per second
+        // easing: easing equation to use
+        var scrollY = window.scrollY,
+            scrollTargetY = scrollTargetY || 0,
+            speed = speed || 2000,
+            easing = easing || 'easeOutSine',
+            currentTime = 0;
+        // min time .1, max time .8 seconds
+        var time = Math.max(.1, Math.min(Math.abs(scrollY - scrollTargetY) / speed, .8));
+        // easing equations from https://github.com/danro/easing-js/blob/master/easing.js
+        var PI_D2 = Math.PI / 2,
+            easingEquations = {
+                easeOutSine: function (pos) {
+                    return Math.sin(pos * (Math.PI / 2));
+                },
+                easeInOutSine: function (pos) {
+                    return (-0.5 * (Math.cos(Math.PI * pos) - 1));
+                },
+                easeInOutQuint: function (pos) {
+                    if ((pos /= 0.5) < 1) {
+                        return 0.5 * Math.pow(pos, 5);
+                    }
+                    return 0.5 * (Math.pow((pos - 2), 5) + 2);
+                }
+            };
+        // add animation loop
+        function tick() {
+            currentTime += 1 / 60;
+            var p = currentTime / time;
+            var t = easingEquations[easing](p);
+            if (p < 1) {
+                requestAnimFrame(tick);
+                window.scrollTo(0, scrollY + ((scrollTargetY - scrollY) * t));
+            } else {
+                window.scrollTo(0, scrollTargetY);
+            }
+        }
+        // call it once to get started
+        tick();
+    }
+</script>
+
+{% if page.password %}
+<script src="/js/kryptojs-3.1.9-1-lib.min.js"></script>
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+{% assign source = page.content | strip_html | rstrip %}
+
+<!-- password protection -->
+<script>
+    var input = document.getElementById("staticrypt-password");
+
+    function resetborder() {
+        input.style.border = "2px solid #f2f2f2";
+    }
+    (function(){
+        input.oninput = resetborder;
+        document.getElementById('staticrypt-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var passphrase = document.getElementById('staticrypt-password').value,
+                encryptedMsg = "{{ source }}",
+                encryptedHMAC = encryptedMsg.substring(0, 64),
+                encryptedHTML = encryptedMsg.substring(64),
+                decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+            if (decryptedHMAC !== encryptedHMAC) {
+                input.style.border = "2px solid #ed1c24";
+                createSnackbar({
+                    message: 'Bad Passphrase',
+                    actionText:"ok",
+                    duration: 3000,
+                    mode: 'error'
+                });
+                return;
+            }
+            //back to top
+            scrollToY(0, 500, 'easeInOutQuint');
+            // show snackbar
+            createSnackbar({
+                message: 'Access Granted',
+                actionText:"ok",
+                duration: 3000,
+                mode: 'success'
+            });
+            // decrypt
+            setTimeout(function () {
+                var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
+                document.getElementsByClassName("post-content")[0].innerHTML = plainHTML;
+                document.getElementsByClassName("catalog-container")[0].classList.toggle('hidden');
+                document.getElementsByClassName("side-progress")[0].classList.toggle('hidden');
+                // generate catelog
+                {% if page.catalog %}
+                generateCatalog(".catalog-body");
+                {% endif %}
+                // recall mathjax to render
+                {% if page.mathjax %}
+                if(typeof MathJax !== 'undefined') {
+                    try {
+                        MathJax.Hub.Queue(
+                            ['resetEquationNumbers', MathJax.InputJax.TeX, ],
+                            ['PreProcess', MathJax.Hub, ],
+                            ['Reprocess', MathJax.Hub, ]
+                        );
+                    } catch (e) {
+                        console.log('Can\'t render with MathJax');
+                    }
+                }
+                {% endif %}
+                {% if site.anchorjs %}
+                anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+                {% endif %}
+                hljs.initHighlighting();
+                // hljs.initHighlighting();
+                <!--fancybox-->
+                {% if site.enable_fancybox %}
+                {% include fancybox.html %}
+                {% endif%}
+
+                <!--aplayer-->
+                {% if page.aplayer %}
+                {% include aplayer.html %}
+                {% endif %}
+            },500);
+            setInterval(updateProgress, 500);
+        });
+    })();
+</script>
+{% else %}
+<script>
+    document.getElementsByClassName("catalog-container")[0].classList.toggle('hidden');
+    document.getElementsByClassName("side-progress")[0].classList.toggle('hidden');
+    setInterval(updateProgress, 500);
+</script>
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{page.id}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
+
+
+{% if site.anchorjs %}
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+{% endif %}
+{% if site.rating_enable %}
+<script type="text/javascript">
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({widget: 'Rating', id: {{ site.rating_id }}});
+    (function () {
+        if ('WIDGETPACK_LOADED' in window) return;
+        WIDGETPACK_LOADED = true;
+        var mc = document.createElement('script');
+        mc.type = 'text/javascript';
+        mc.async = true;
+        mc.src = 'https://embed.widgetpack.com/widget.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+</script>
+{% endif %}
+
+<script>
+function getY(obj){
+    var parObj=obj;
+    var top=obj.offsetTop;
+    while(parObj = parObj.offsetParent){
+        top+=parObj.offsetTop;
+    }
+    return top;
+}
+
+
+function DisplayCoord(event){
+    var top, target, parent, offsety;
+    target = document.getElementsByClassName("progress")[0];
+    parent = document.getElementsByClassName("side-progress")[0];
+    top=getY(target);
+    if (parent.classList.contains('fixed')) {
+        offsety = event.clientY - top;
+    }else {
+        offsety = event.clientY - top+ (document.documentElement.scrollTop || document.body.scrollTop);
+    }
+    offsety = (offsety / target.offsetHeight) * (document.body.offsetHeight - window.innerHeight);
+    console.info(offsety);
+    scrollToY(offsety, 500, 'easeInOutQuint');
+    updateProgress();
+}
+</script>

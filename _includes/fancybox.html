@@ -1,0 +1,37 @@
+
+    function UrlExists(url)
+    {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', url, false);
+        http.send();
+        return http.status!=404;
+    }
+
+    function reverseString(str) {
+        if (str === "") // This is the terminal case that will end the recursion
+            return "";
+        else
+            return reverseString(str.substr(1)) + str.charAt(0);
+    }
+    
+    var group = $('p:has(img)');
+    var length = group.length;
+    console.info("be aware that errors in these area is because no hires img in img path and will have no damage to website");
+    for (var i = 0; i < length; ++i){
+        var obj = group[i];
+        var src = obj.children[0].getAttribute('src');
+        var srclength = src.length;
+        var addon = "";
+        for (var j = srclength - 1; j >= 0; --j){
+            if (src[j] !== '.') {addon = addon + src[j];} else break;
+        }
+        var hisrc = src.substr(0, j) + '@hires.' + reverseString(addon);
+        var _innerText;
+        if (UrlExists(hisrc)){
+            _innerText = '<a data-fancybox="gallery" href=' + hisrc + '>' + obj.innerHTML + '</a>';
+        }else {
+            _innerText = '<a data-fancybox="gallery" href=' + src + '>' + obj.innerHTML + '</a>';
+        }
+        obj.innerHTML = _innerText;
+    }
+    console.info("-------------------------hires img detection ends-------------------------");

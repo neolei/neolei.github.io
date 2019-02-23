@@ -1,0 +1,207 @@
+---
+layout:     post
+title:      “C++ 模版”
+subtitle:   “理解模版的作用的使用”
+date:       2018-12-13
+author:     “Soptq”
+header-img: "img/post_c_algorithm.jpg"
+catalog:    true
+tags:
+    - C++
+---
+
+
+模版（Template）作为 C++ 的语法糖，之前一直有所耳闻但没有去接触（因为一听就感觉很高大上）。前几天花了一点时间去了解模版，发现其实不难，甚至还有点简单，但是非常有用。
+
+### 引
+
+试想，如果你要计算一个整形数组 `arr[]` 的长度，你设立了一个函数 `getLength(int *arr)` 如下：
+
+```cpp
+#include <cstdlib>
+int getLength(&arr){
+	return sizeof(arr)/sizeof(arr[0]);
+}
+```
+
+非常流畅的思路，但是写着写着，突然想再次计算一个 `char` 数组的长度，没有办法，我们又定义一个函数 `getCharLength(char &arr)` ：
+
+```cpp
+#include <cstdlib>
+int getCharLength(char &arr){
+	return sizeof(arr)/sizeof(arr[0]);
+}
+```
+
+我们可以发现，上面两个函数，唯一的不一样就是传进来的数组类型。那么我们如果要算另外4种数据类型的数组长度，难道我们要写另外4个函数？有没有方法，吧函数传入参数的数据类型作为变量呢？
+
+### 模版 Template
+幸运的是， C++真的为我们提供了这样的方法，来将传入参数的数组类型作为变量。我们如果吧上面的计算数组长度的函数写成模版，是这样的：
+
+```cpp
+#include <cstdlib>
+
+template <class T>
+int getLength(T &arr){
+	return sizeof(arr)/sizeof(arr[0]);
+}
+```
+
+在这个模版中，我们在函数前面加上 `template <class T>` 这样的语句，表示在下面这个函数中，不确定的类型，并将这个类型假设为 `T` 。于是，我们可以看到，在函数中，传入参数从 `int &arr` 变成了 `T &arr` 。
+
+#### 如何使用
+
+模板函数定义的一般形式如下所示：
+
+```cpp
+template <class type> 
+ret-type func-name(parameter list)
+{
+   // 函数的主体
+}
+```
+
+在这里，**type** 是函数所使用的数据类型的占位符名称。这个名称可以在函数定义中使用。
+
+上面的模版是 **函数模版**，那么理所应当的，我们也应该有 **类模版**。
+
+```cpp
+template <class type> 
+class class-name {
+.
+.
+.
+}
+```
+
+在这里，**type** 是占位符类型名称，可以在类被实例化的时候进行指定。您可以使用一个逗号分隔的列表来定义多个泛型数据类型。
+
+### 例子
+
+#### 函数模版
+
+```cpp
+#include <iostream>
+#include <string>
+ 
+using namespace std;
+ 
+template <typename T>
+inline T const& Max (T const& a, T const& b) 
+{ 
+    return a < b ? b:a; 
+} 
+int main ()
+{
+ 
+    int i = 39;
+    int j = 20;
+    cout << "Max(i, j): " << Max(i, j) << endl; 
+ 
+    double f1 = 13.5; 
+    double f2 = 20.7; 
+    cout << "Max(f1, f2): " << Max(f1, f2) << endl; 
+ 
+    string s1 = "Hello"; 
+    string s2 = "World"; 
+    cout << "Max(s1, s2): " << Max(s1, s2) << endl; 
+ 
+   return 0;
+}
+```
+
+运行结果：
+
+```cpp
+Max(i, j): 39
+Max(f1, f2): 20.7
+Max(s1, s2): World
+```
+
+#### 类模版
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <string>
+#include <stdexcept>
+ 
+using namespace std;
+ 
+template <class T>
+class Stack { 
+  private: 
+    vector<T> elems;     // 元素 
+ 
+  public: 
+    void push(T const&);  // 入栈
+    void pop();               // 出栈
+    T top() const;            // 返回栈顶元素
+    bool empty() const{       // 如果为空则返回真。
+        return elems.empty(); 
+    } 
+}; 
+ 
+template <class T>
+void Stack<T>::push (T const& elem) 
+{ 
+    // 追加传入元素的副本
+    elems.push_back(elem);    
+} 
+ 
+template <class T>
+void Stack<T>::pop () 
+{ 
+    if (elems.empty()) { 
+        throw out_of_range("Stack<>::pop(): empty stack"); 
+    }
+    // 删除最后一个元素
+    elems.pop_back();         
+} 
+ 
+template <class T>
+T Stack<T>::top () const 
+{ 
+    if (elems.empty()) { 
+        throw out_of_range("Stack<>::top(): empty stack"); 
+    }
+    // 返回最后一个元素的副本 
+    return elems.back();      
+} 
+ 
+int main() 
+{ 
+    try { 
+        Stack<int>         intStack;  // int 类型的栈 
+        Stack<string> stringStack;    // string 类型的栈 
+ 
+        // 操作 int 类型的栈 
+        intStack.push(7); 
+        cout << intStack.top() <<endl; 
+ 
+        // 操作 string 类型的栈 
+        stringStack.push("hello"); 
+        cout << stringStack.top() << std::endl; 
+        stringStack.pop(); 
+        stringStack.pop(); 
+    } 
+    catch (exception const& ex) { 
+        cerr << "Exception: " << ex.what() <<endl; 
+        return -1;
+    } 
+}
+```
+
+运行结果
+
+```cpp
+7
+hello
+Exception: Stack<>::pop(): empty stack
+```
+
+
+
+
+

@@ -1,0 +1,22 @@
+{
+    "name": "Soptlog",
+    "short_name": "Soptlog",
+    "description": "Soptqs blog",
+    "icons": [
+        {
+            "src": "https://soptq.me/img/icon/android-chrome-192x192.png?v=M4mbxvr6MJ",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "https://soptq.me/img/icon/android-chrome-512x512.png?v=M4mbxvr6MJ",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "start_url": "https://soptq.me",
+    "display": "standalone",
+    "orientation": "portrait"
+}

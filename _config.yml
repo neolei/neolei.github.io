@@ -1,0 +1,152 @@
+# Site settings
+title: Soptlog
+SEOTitle: Soptlog | Soptq’s Blog
+header-img: img/home-bg.jpg
+email: sooptq@gmail.com
+description: "Soptq’s personal blog based on Jekyll and Github Pages. It will contain some  
+experience and diaries."
+keyword: “Soptq, Soptq Blog, Blog, Website, Internet, Java, Android, 博客, 个人网站, 前段”
+url: "soptq.me"              # your host, for absolute URL
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
+
+# Publish posts or collection documents with a future date.
+future: true
+
+nightMode: false
+
+
+# SNS settings
+RSS: true
+# weibo_username:     huxpro
+zhihu_username:     soptq
+github_username:    Soptq
+bilibili_username:  13942596
+linkedin_username:  宇浩-周-a01657172
+#twitter_username:  huxpro
+#facebook_username:  huxpro
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+permalink: pretty
+paginate: 10
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md","README.zh.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+plugins:
+    - jekyll-pwa-plugin
+    - jekyll-paginate
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+  syntax_highlighter_opts:
+     span:
+       line_numbers: false
+     block:
+       line_numbers: true
+       start_line: 1
+
+
+
+#gitalk:
+#    owner: 你
+#    repo: 评论仓库名称
+#    clientID: 申请的ID
+#    clientSecret: 申请的clientSecret
+#    admin: 名称
+
+# Disqus settings
+disqus_username: soptlog
+
+# Duoshuo settings
+# duoshuo_username: soptlog
+# Share component is depend on Comment so we can NOT use share only.
+# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+#ba_track_id: 
+# Google Analytics
+ga_track_id: 'UA-113503573-1'            # Format: UA-xxxxxx-xx
+ga_domain: auto
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: “Only my Railgun”
+sidebar-avatar: /img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# Progressive Web Apps
+chrome-tab-theme-color: "#000000"
+service-worker: true
+
+
+
+# MathJax rendering for layout:page (e.g. post preview)
+page-mathjax: true
+
+# Friends
+# friends: [
+    # {
+        # title: "Hux Blog",
+        # href: "http://huangxuan.me"
+    # },{
+    #     title: "Foo",
+    #     href: "#"
+    # },{
+    #     title: "Bar",
+    #     href: "#"
+    # },{
+    #     title: "Example Friends",
+    #     href: "#"
+    # },{
+    #     title: "It helps SEO",
+        # href: "#"
+    # }
+# ]
+
+pwa:
+  sw_src_filepath: service-worker.js # Optional
+  sw_dest_filename: service-worker.js # Optional
+  dest_js_directory: js # Required
+  precache_recent_posts_num: 10 # Optional
+  precache_glob_directory: / # Optional
+  precache_glob_patterns: # Optional
+    - "{js,css,fonts}/**/*.{js,css,eot,svg,ttf,woff}"
+    - index.html
+  precache_glob_ignores: # Optional
+    - sw-register.js
+    - "fonts/**/*"
+
+
+# enable rating for posts
+rating_enable: true
+rating_id: 16625
+rating_color: f79533
+
+# fancybox
+enable_fancybox: true
+

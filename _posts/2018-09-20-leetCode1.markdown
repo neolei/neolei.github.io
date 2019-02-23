@@ -1,0 +1,64 @@
+---
+layout:     post
+title:      “LeetCode:1”
+subtitle:   “two-sum”
+date:       2018-09-20
+author:     “Soptq”
+header-img: "img/post_leetcode.jpg"
+catalog:    false
+tags:
+    - LeetCode Easy
+    - Java
+---
+
+
+>长期更新，对使用 Java 刷 LeetCode 过程中一些有趣的题的感想和启发。
+>[解题源代码仓库](https://github.com/Soptq/LeetCodeLib)
+
+### 题目
+
+> [题目链接](https://leetcode-cn.com/problems/two-sum/description/)
+> 
+> Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+>
+>You may assume that each input would have exactly one solution, and you may not use the same element twice.
+>
+>Example:
+>
+>Given nums = [2, 7, 11, 15], target = 9,
+>
+>Because nums[0] + nums[1] = 2 + 7 = 9,
+>
+>return [0, 1].
+>
+
+### 我的思路
+
+这道题相当的简单，双重循环就可以解决了。
+
+### 我的代码
+
+```java
+//解决方法
+class Solution {
+	public int[] twoSum(int[] nums, int target){
+		int length = nums.length;
+		for (int i = 0;i < (length - 1);i++) {
+			for (int j = i + 1;j < length;j++) {
+				if (nums[i] + nums[j] == target) {
+					return new int[]{i,j};
+				}
+			}
+		}
+		return null;
+	}
+}
+```
+
+
+
+
+
+
+
+

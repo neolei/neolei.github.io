@@ -1,0 +1,21 @@
+    var player = document.getElementById('aplayer');
+    var jsonname = player.getAttribute("data-name");
+    var lrctype = player.getAttribute("data-lrc-type");
+    var path = location.origin + "/data/aplayer/" + jsonname;
+    const ap = new APlayer({
+        container: player,
+        mini: false,
+        autoplay: false,
+        theme: '#0085a1',
+        loop: 'all',
+        order: 'list',
+        preload: 'auto',
+        volume: 0.7,
+        mutex: true,
+        listFolded: false,
+        listMaxHeight: 90,
+        lrcType: parseInt(lrctype)
+    });
+    jQuery.get(path, function(data) {
+        ap.list.add(data);
+    });

@@ -1,0 +1,144 @@
+---
+layout: page
+title: "About"
+description: "Feel free to talk here."
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 </option>
+    <option value="1"> English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+    <blockquote>
+        心之所向
+        素履以往
+    </blockquote>
+    <p>
+    你好，我是 Soptq ,目前是一名 2018 级 CS 专业的学生，欢迎来到我的博客。
+    <br><br>
+    我从小就对计算机拥有非常浓厚的兴趣。从小学5年级的机器人图形化编程，6年级的 Pascal 入门，初中三年的 NOIP 竞赛，最后再到高中的自学 Java，Android 程序设计，以及对树莓派的自定义编程。我荣幸的在高考中考入了四川某985，211，双一流高校，并进入了计算机专业珠峰计划班。我似乎这么多年来始终与计算机有不解之缘。
+    <br><br>
+    学习过多种语言后，我发现其实各种语言的实质是相似的，真正可以区分在这个专业上的厉害程度的，是实战，是对算法的理解。几年来，我刷了 LeetCode，因为应用程序的开发自学了 mySQL 数据库，为 Github 社区贡献过自己的力量，也从其拿走了一些前辈的经验。全英文的公开课，文献早在高二就已经不成问题。从中我习得了很多经验，也获得了很多真正的快乐，这是在初高中的课堂上很难体会到的。有人说我不自量力，因为我并不知道他们的全部原理，但我认为只有提前享受了工具带给我的快乐，才可以在日后的学习中保持兴趣之心。也正是这样的兴趣才让我在计算机科学这条道路上走到今天。
+    <br><br>    
+    我从小就对自己的定位和对未来的规划非常明确，我一直知道自己想做什么，要做什么。初中的时候，我便已经有能力独立思考，并明确了我未来的人生轨迹。我热爱计算机编程，所以我一直沿着这条初中时期的人生轨迹行走至今，毫不后悔。
+    <br><br>
+    <h4># 大学篇：</h4>
+    <br><br>
+    初高中更多的培养的是全才，而当今社会更需要的其实是专才。高中时期的广学可以说是应付高考，但是进入大学后的广学我认为就是浪费生命。我热爱计算机，所以我放弃化学和生物；我热爱英语，所以我放弃古文和历史。真正的人生就是在不断放弃中成长。我把自己有限的精力投入到真正属于我的未来中去，这就是我的理念。
+    <br><br>
+    <strong>心之所向，素履以往。</strong>
+    <br><br>
+    你若问我我在大学的意义，那么有且只有一个，就是让自己变得更强。我从初中觉悟的那天就开始等待大学，因为大学对于我是自由的象征，不是肉体的自由，是思想的自由。等了5年，终于迎来了我梦想的大学。我不会把自己5年的想念给浪费。所以说，我知道自己想做什么————我从初二时就知道了。
+    </p>
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <blockquote>
+        The future that you will think
+        The place that you will go
+    </blockquote>
+
+    <p>
+        Hi, my name is Soptq. Cuttently i am a student learning CS. Welcome to my blog.
+    <br><br>
+    I was attracted by Computer Science when i was very young. It begins with the GUI-coding for robots when i was in primary school, NOIP when i was in middle school,  learning Java & Android Studio, coding for PI when i was in high school. I was very honored to have a good grade during CEE and get into a very grate university, and get into the top class of Computer Science Subject. It seems like i always have a “weird” relationship with CS.
+    <br><br>
+    After learning multiple languages, I found that all languages are actually the same, the real difference between Bill Gates and me is the understanding of coding, the understanding of algorithms. These years i had done LeetCode, i had learned mySQL because of the developing of my Android Application, i also had contributed something to Github community. The classes and documents that in English are even not a problem for me. I gained experience from them, and happiness as well. Some said i do something that beyond my ability, but i believe only benefit from tools first, can we contain the interests when my learn the basic of them.
+    <br><br>
+    I always have a very clear images of myself and know exactly what i want to do in the future. i know what i want to do, and what i need to do as well. when i was in middle school, i had already known what is my life goals, and sticked to it until now.
+    <br><br>
+    <h4># University</h4>
+    <br><br>
+    Middle schools and high schools are fostering students that can do everything, but i think society needs people can do one thing very well.  Learning everything in university is a waste of life! I love CS, so i give physics up; I love English, so i give Chinese up. life is getting stronger along the road of giving up. I will contribute my limited life time to my future.
+    <br><br>
+    <strong>The future that you will think The place that you will go</strong>
+    <br><br>
+    If you ask me about the meaning of university, i can say and only say th make myself stronger. i was wondering the life in university since i was in middle school, because university for me, is a symbol of freedom, not the freedom for body, but for mind.I will not waste my wonders. As i said, i know what i want to do —— since middle school.
+    </p>
+
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}

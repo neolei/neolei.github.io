@@ -1,0 +1,82 @@
+---
+layout:     post
+title:      “LeetCode:15”
+subtitle:   “3sum”
+date:       2018-09-23
+author:     “Soptq”
+header-img: "img/post_leetcode.jpg"
+catalog:    false
+tags:
+    - LeetCode Easy
+    - Java
+---
+
+
+>长期更新，对使用 Java 刷 LeetCode 过程中一些有趣的题的感想和启发。
+>[解题源代码仓库](https://github.com/Soptq/LeetCodeLib)
+
+### 题目
+
+> [题目链接](https://leetcode-cn.com/problems/3sum/description/)
+>
+> Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+> 
+> Note:
+> 
+> The solution set must not contain duplicate triplets.
+> 
+> Example:
+> 
+> Given array nums = [-1, 0, 1, 2, -1, -4],
+> 
+> A solution set is:
+> [
+>   [-1, 0, 1],
+>   [-1, -1, 2]
+> ]
+
+### 我的思路
+
+思路如下：
+1. 现排序；
+2. 双重循环寻找匹配的数组；
+3. 找到后先与前一个数组比较，不相同的话就加入 `output`。
+
+### 我的代码
+
+```java
+//解决方法
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums){
+        List<List<Integer>> output = new ArrayList<>();
+        int length = nums.length;
+        //排序
+        Arrays.sort(nums);
+        //开始处理
+        for (int i = 0;i < (length - 2);i++) {
+            for (int j = (i + 1);j < (length - 1);j++) {
+                for (int k = (j + 1);k < length;k++) {
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        list.add(nums[k]);
+                        if (list != output.get(output.size()-1)) {
+                            output.add(list);
+                        }
+                    }
+                }
+            }
+        }
+        return output;
+    }
+}
+```
+
+
+
+
+
+
+
+
