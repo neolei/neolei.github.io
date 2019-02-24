@@ -4,6 +4,7 @@ title:  隐马尔科夫模型(1)
 subtitle: "隐马尔科夫模型原理"
 author: Neolei
 date: 2019-01-15
+header-img: "img/post_comparation.jpg"
 mathjax:    true
 catalog:    true
 tags:
