@@ -5,6 +5,7 @@ subtitle: "隐马尔科夫模型原理"
 author: Neolei
 date: 2019-01-15
 mathjax:    true
+catalog:    true
 tags:
     - HMM
     - ML
