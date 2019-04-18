@@ -3,7 +3,6 @@ layout: post
 title: Anaconda 清华源关闭后，怎么办？
 subtitle: "根据 Anaconda 软件源上的说明，Anaconda 和 Miniconda 是 Anaconda, Inc. 的商标，任何未经授权的公开镜像都是不允许的。因此清华镜像Tuna 关闭了Anaconda镜像服务"
 date: 2019-04-18
-header-img: "img/anaconda_tuna.jpg"
 catalog:    true
 reproduce:  true
 tags:
