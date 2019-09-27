@@ -4,4 +4,8 @@
 .idea/inspectionProfiles/Project_Default.xml
 .idea/workspace.xml
 _site
-.idea/*/*
+.idea/*.xml
+.idea/*.iml
+.idea/libraries
+.idea
+_posts/2018*
