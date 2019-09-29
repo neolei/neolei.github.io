@@ -3,7 +3,6 @@ layout: post
 title: Ray tune：一个可扩展的超参数优化Python库
 subtitle: "Tune是一个超参数优化库，可以用于PyTorch、TensorFlow， MXnet，keras等深度学习框架"
 date: 2019-9-1
-header-img: "img/tune.png"
 catalog:    true
 reproduce:  false
 mathjax:    false
@@ -43,7 +42,7 @@ tags:
 ### *快速开始*
 
 安装下列工具：
-```shell script
+```bash
 pip install ray torch torchvison filelock
 ```
 
@@ -75,7 +74,7 @@ df = analysis.dataframe()
 ```
 
 使用Tensorboard可视化实验结果：
-```shell script
+```bash
 tensorboard --logdir ray_results
 ```
 ![](https://ray.readthedocs.io/en/latest/_images/tune-start-tb.png)
