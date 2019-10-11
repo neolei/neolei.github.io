@@ -6,7 +6,7 @@ email: wanglei@neolei.cn
 description: "lei’s personal blog based on Jekyll and Github Pages. It will contain some  
 experience and diaries."
 keyword: “Neolei, lei's Blog, Blog, Bioinformatics, Website, Internet, Python, 博客, 个人网站”
-url: "https://blog.neolei.cn"              # your host, for absolute URL
+url: "https://neolei.github.io"              # your host, for absolute URL
 baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -81,7 +81,7 @@ disqus_username: neoleis-blog-1
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id:  c32113a65e35ca818798cb136129d0b2
+ba_track_id:  ad869ac2a37548a96efc2c3f1f01f89d
 # Google Analytics
 ga_track_id: 'UA-130645409-2'            # Format: UA-xxxxxx-xx
 ga_domain: auto
